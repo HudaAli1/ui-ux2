@@ -1,0 +1,2732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeCharge - Interactive Prototype</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Screen Navigation Controls -->
+        <div class="controls">
+            <h1>SafeCharge - Interactive Prototype</h1>
+            <div class="navigation-info">
+                <p>Current Screen: <span id="current-screen">1</span></p>
+                <div class="nav-buttons">
+                    <button onclick="previousScreen()">← Previous</button>
+                    <button onclick="nextScreen()">Next →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- All Screens Container -->
+        <div class="all-screens">
+            
+            <!-- Screen 1: Splash Screen -->
+            <div class="screen active" id="screen-1">
+                <div class="phone-frame">
+                    <div class="status-bar">
+                        <div class="dynamic-island"></div>
+                        <div class="status-bar-left">
+                            <span class="status-time">9:41</span>
+                        </div>
+                        <div class="status-bar-right">
+                            <div class="signal-icon">
+                                <svg viewBox="0 0 17 10" fill="none">
+                                    <rect x="0" y="8" width="2" height="2" fill="#000000" opacity="0.3"/>
+                                    <rect x="3" y="6" width="2" height="4" fill="#000000" opacity="0.5"/>
+                                    <rect x="6" y="4" width="2" height="6" fill="#000000" opacity="0.7"/>
+                                    <rect x="9" y="2" width="2" height="8" fill="#000000" opacity="1"/>
+                                    <rect x="12" y="0" width="2" height="10" fill="#000000" opacity="1"/>
+                                </svg>
+                            </div>
+                            <div class="wifi-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                                    <line x1="12" y1="20" x2="12.01" y2="20"/>
+                                </svg>
+                            </div>
+                            <div class="battery-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="6" width="18" height="12" rx="2" ry="2"/>
+                                    <line x1="23" y1="13" x2="23" y2="11"/>
+                                    <rect x="3" y="8" width="14" height="8" rx="1" fill="#000000"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="screen-content splash">
+                        <div class="app-logo">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                            </svg>
+                        </div>
+                        <h1 class="app-title">SAFECHARGE</h1>
+                        <p class="app-subtitle">Smart. Safe. Efficient.</p>
+                        <div class="button-group">
+                            <button class="btn btn-primary" onclick="showScreen(2)">Register</button>
+                            <button class="btn btn-secondary" onclick="showScreen(9)">Login</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 2: Register -->
+            <div class="screen" id="screen-2">
+                <div class="phone-frame">
+                    <div class="status-bar">
+                        <div class="dynamic-island"></div>
+                        <div class="status-bar-left">
+                            <span class="status-time">9:41</span>
+                        </div>
+                        <div class="status-bar-right">
+                            <div class="signal-icon">
+                                <svg viewBox="0 0 17 10" fill="none">
+                                    <rect x="0" y="8" width="2" height="2" fill="#000000" opacity="0.3"/>
+                                    <rect x="3" y="6" width="2" height="4" fill="#000000" opacity="0.5"/>
+                                    <rect x="6" y="4" width="2" height="6" fill="#000000" opacity="0.7"/>
+                                    <rect x="9" y="2" width="2" height="8" fill="#000000" opacity="1"/>
+                                    <rect x="12" y="0" width="2" height="10" fill="#000000" opacity="1"/>
+                                </svg>
+                            </div>
+                            <div class="wifi-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                                    <line x1="12" y1="20" x2="12.01" y2="20"/>
+                                </svg>
+                            </div>
+                            <div class="battery-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="6" width="18" height="12" rx="2" ry="2"/>
+                                    <line x1="23" y1="13" x2="23" y2="11"/>
+                                    <rect x="3" y="8" width="14" height="8" rx="1" fill="#000000"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="top-app-bar">
+                        <div class="back-button" onclick="showScreen(1)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7"/>
+                            </svg>
+                        </div>
+                        <h2 class="page-title">Register</h2>
+                    </div>
+                    <div class="screen-content has-top-bar">
+                        <input type="text" placeholder="Full Name">
+                        <input type="email" placeholder="Email Address">
+                        <input type="tel" placeholder="Phone Number">
+                        <input type="password" placeholder="Password">
+                        <button class="btn-social">G Sign in with Google</button>
+                        <button class="btn btn-primary btn-full" onclick="showScreen(12)">Register</button>
+                        <p class="link-text">Already have an account? <span onclick="showScreen(9)" class="link">Sign In</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 3: Login -->
+            <div class="screen" id="screen-3">
+                <div class="phone-frame">
+                    <div class="status-bar">
+                        <div class="dynamic-island"></div>
+                        <div class="status-bar-left">
+                            <span class="status-time">9:41</span>
+                        </div>
+                        <div class="status-bar-right">
+                            <div class="signal-icon">
+                                <svg viewBox="0 0 17 10" fill="none">
+                                    <rect x="0" y="8" width="2" height="2" fill="#000000" opacity="0.3"/>
+                                    <rect x="3" y="6" width="2" height="4" fill="#000000" opacity="0.5"/>
+                                    <rect x="6" y="4" width="2" height="6" fill="#000000" opacity="0.7"/>
+                                    <rect x="9" y="2" width="2" height="8" fill="#000000" opacity="1"/>
+                                    <rect x="12" y="0" width="2" height="10" fill="#000000" opacity="1"/>
+                                </svg>
+                            </div>
+                            <div class="wifi-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                                    <line x1="12" y1="20" x2="12.01" y2="20"/>
+                                </svg>
+                            </div>
+                            <div class="battery-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="6" width="18" height="12" rx="2" ry="2"/>
+                                    <line x1="23" y1="13" x2="23" y2="11"/>
+                                    <rect x="3" y="8" width="14" height="8" rx="1" fill="#000000"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="screen-content">
+                        <h2>Log In</h2>
+                        <input type="email" placeholder="Email Address or Mobile Number">
+                        <input type="password" placeholder="Password">
+                        <p class="link-text-left" onclick="showScreen(14)">Forgot Password</p>
+                        <button class="btn-social">G Sign in with Google</button>
+                        <button class="btn btn-primary btn-full" onclick="showScreen(12)">Login</button>
+                        <p class="link-text">Don't have an account? <span onclick="showScreen(2)" class="link">Sign Up</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 4: Devices List (Analytics) -->
+            <div class="screen" id="screen-4">
+                <div class="phone-frame">
+                    <div class="status-bar">
+                        <div class="dynamic-island"></div>
+                        <div class="status-bar-left">
+                            <span class="status-time">9:41</span>
+                        </div>
+                        <div class="status-bar-right">
+                            <div class="signal-icon">
+                                <svg viewBox="0 0 17 10" fill="none">
+                                    <rect x="0" y="8" width="2" height="2" fill="#000000" opacity="0.3"/>
+                                    <rect x="3" y="6" width="2" height="4" fill="#000000" opacity="0.5"/>
+                                    <rect x="6" y="4" width="2" height="6" fill="#000000" opacity="0.7"/>
+                                    <rect x="9" y="2" width="2" height="8" fill="#000000" opacity="1"/>
+                                    <rect x="12" y="0" width="2" height="10" fill="#000000" opacity="1"/>
+                                </svg>
+                            </div>
+                            <div class="wifi-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                                    <line x1="12" y1="20" x2="12.01" y2="20"/>
+                                </svg>
+                            </div>
+                            <div class="battery-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="6" width="18" height="12" rx="2" ry="2"/>
+                                    <line x1="23" y1="13" x2="23" y2="11"/>
+                                    <rect x="3" y="8" width="14" height="8" rx="1" fill="#000000"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="top-app-bar">
+                        <div class="back-button" onclick="showScreen(13)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7"/>
+                            </svg>
+                        </div>
+                        <h2 class="page-title">Device Analytics</h2>
+                    </div>
+                    <div class="screen-content has-top-bar">
+                        <p class="info-text" style="text-align: left; margin-bottom: 20px;">Select a device to view detailed analytics</p>
+                        <div class="device-list">
+                            <div class="device-card" onclick="showScreen(19)">
+                                <span class="device-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                                        <line x1="12" y1="18" x2="12" y2="18"/>
+                                    </svg>
+                                </span>
+                                <div class="device-info">
+                                    <strong>iPhone 15</strong>
+                                    <small><span class="inline-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="18" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/><rect x="3" y="8" width="14" height="8" rx="1" fill="currentColor" opacity="0.85"/></svg></span> Charging - 85% • 1.5h remaining</small>
+                                </div>
+                                <div class="device-status">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10" fill="#10b981" stroke="none"/>
+                                        <path d="M8 12l2 2 4-4" stroke="white" stroke-width="2.5"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="device-card" onclick="showScreen(20)">
+                                <span class="device-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="4" width="20" height="12" rx="2" ry="2"/>
+                                        <line x1="2" y1="16" x2="22" y2="16"/>
+                                        <line x1="6" y1="8" x2="6" y2="8"/>
+                                    </svg>
+                                </span>
+                                <div class="device-info">
+                                    <strong>MacBook Pro</strong>
+                                    <small><span class="inline-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></span> Connected - 42% • Not charging</small>
+                                </div>
+                                <div class="device-status">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10" fill="#f59e0b" stroke="none"/>
+                                        <circle cx="12" cy="12" r="4" fill="white"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="device-card" onclick="showScreen(21)">
+                                <span class="device-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                        <line x1="8" y1="21" x2="16" y2="21"/>
+                                        <line x1="12" y1="17" x2="12" y2="21"/>
+                                    </svg>
+                                </span>
+                                <div class="device-info">
+                                    <strong>Odyssey G6</strong>
+                                    <small><span class="inline-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span> Active - 78% • Optimized</small>
+                                </div>
+                                <div class="device-status">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10" fill="#10b981" stroke="none"/>
+                                        <path d="M8 12l2 2 4-4" stroke="white" stroke-width="2.5"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="device-card" onclick="showScreen(5)">
+                                <span class="device-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="8"/>
+                                        <polyline points="12 6 12 12 16 14"/>
+                                    </svg>
+                                </span>
+                                <div class="device-info">
+                                    <strong>Apple Watch SE</strong>
+                                    <small><span class="inline-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="18" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/><rect x="3" y="8" width="14" height="8" rx="1" fill="currentColor" opacity="0.95"/></svg></span> Charging - 95% • Almost full</small>
+                                </div>
+                                <div class="device-status">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10" fill="#10b981" stroke="none"/>
+                                        <path d="M8 12l2 2 4-4" stroke="white" stroke-width="2.5"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="summary-card">
+                            <div class="summary-item">
+                                <span class="summary-label">Total Devices</span>
+                                <span class="summary-value">4</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Active Now</span>
+                                <span class="summary-value">3</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Avg Battery</span>
+                                <span class="summary-value">75%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav-bar">
+                        <span class="nav-icon active" onclick="showScreen(13)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                        </span>
+                        <span class="nav-icon" onclick="showScreen(26)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                            </svg>
+                        </span>
+                        <span class="nav-icon" onclick="showScreen(8)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 5: Device Detail -->
+            <div class="screen" id="screen-5">
+                <div class="phone-frame">
+                    <div class="status-bar">
+                        <div class="dynamic-island"></div>
+                        <div class="status-bar-left">
+                            <span class="status-time">9:41</span>
+                        </div>
+                        <div class="status-bar-right">
+                            <div class="signal-icon">
+                                <svg viewBox="0 0 17 10" fill="none">
+                                    <rect x="0" y="8" width="2" height="2" fill="#000000" opacity="0.3"/>
+                                    <rect x="3" y="6" width="2" height="4" fill="#000000" opacity="0.5"/>
+                                    <rect x="6" y="4" width="2" height="6" fill="#000000" opacity="0.7"/>
+                                    <rect x="9" y="2" width="2" height="8" fill="#000000" opacity="1"/>
+                                    <rect x="12" y="0" width="2" height="10" fill="#000000" opacity="1"/>
+                                </svg>
+                            </div>
+                            <div class="wifi-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                                    <line x1="12" y1="20" x2="12.01" y2="20"/>
+                                </svg>
+                            </div>
+                            <div class="battery-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="6" width="18" height="12" rx="2" ry="2"/>
+                                    <line x1="23" y1="13" x2="23" y2="11"/>
+                                    <rect x="3" y="8" width="14" height="8" rx="1" fill="#000000"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="top-app-bar">
+                        <div class="back-button" onclick="showScreen(4)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7"/>
+                            </svg>
+                        </div>
+                        <h2 class="page-title">Apple Watch SE</h2>
+                    </div>
+                    <div class="screen-content has-top-bar">
+                        <div class="device-detail-info">
+                            <div class="device-status-large">
+                                <div class="device-status-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="8"/>
+                                        <polyline points="12 6 12 12 16 14"/>
+                                    </svg>
+                                </div>
+                                <div class="device-status-details">
+                                    <h4>Apple Watch SE</h4>
+                                    <p class="device-status-text"><span class="inline-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="18" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/><rect x="3" y="8" width="14" height="8" rx="1" fill="currentColor" opacity="0.95"/></svg></span> Charging - 95% • Almost full</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="collapsible-section" onclick="showScreen(6)">
+                            <div class="section-header">
+                                <h4>Analytics Dashboard</h4>
+                                <span class="arrow">→</span>
+                            </div>
+                        </div>
+                        <div class="collapsible-section" onclick="showScreen(18)">
+                            <div class="section-header">
+                                <h4>Smart Charging</h4>
+                                <span class="arrow">→</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav-bar">
+                        <span class="nav-icon" onclick="showScreen(13)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                        </span>
+                        <span class="nav-icon" onclick="showScreen(26)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                            </svg>
+                        </span>
+                        <span class="nav-icon" onclick="showScreen(8)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 6: Combined Analytics Dashboard -->
+            <div class="screen" id="screen-6">
+                <div class="phone-frame">
+                    <div class="status-bar">
+                        <div class="dynamic-island"></div>
+                        <div class="status-bar-left">
+                            <span class="status-time">9:41</span>
+                        </div>
+                        <div class="status-bar-right">
+                            <div class="signal-icon">
+                                <svg viewBox="0 0 17 10" fill="none">
+                                    <rect x="0" y="8" width="2" height="2" fill="#000000" opacity="0.3"/>
+                                    <rect x="3" y="6" width="2" height="4" fill="#000000" opacity="0.5"/>
+                                    <rect x="6" y="4" width="2" height="6" fill="#000000" opacity="0.7"/>
+                                    <rect x="9" y="2" width="2" height="8" fill="#000000" opacity="1"/>
+                                    <rect x="12" y="0" width="2" height="10" fill="#000000" opacity="1"/>
+                                </svg>
+                            </div>
+                            <div class="wifi-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                                    <line x1="12" y1="20" x2="12.01" y2="20"/>
+                                </svg>
+                            </div>
+                            <div class="battery-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="6" width="18" height="12" rx="2" ry="2"/>
+                                    <line x1="23" y1="13" x2="23" y2="11"/>
+                                    <rect x="3" y="8" width="14" height="8" rx="1" fill="#000000"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="top-app-bar">
+                        <div class="back-button" onclick="showScreen(5)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7"/>
+                            </svg>
+                        </div>
+                        <h2 class="page-title">Analytics Dashboard</h2>
+                    </div>
+                    <div class="screen-content has-top-bar">
+                        <!-- Current Charge State -->
+                        <div class="analytics-card">
+                            <h4>Current Status</h4>
+                            <div class="status-grid">
+                                <div class="status-box">
+                                    <div class="status-box-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="1" y="6" width="18" height="12" rx="2" ry="2"/>
+                                            <line x1="23" y1="13" x2="23" y2="11"/>
+                                            <rect x="3" y="8" width="14" height="8" rx="1" fill="currentColor" opacity="0.95"/>
+                                        </svg>
+                                    </div>
+                                    <div class="status-box-info">
+                                        <span class="status-box-label">Charge Level</span>
+                                        <span class="status-box-value">95%</span>
+                                    </div>
+                                </div>
+                                <div class="status-box">
+                                    <div class="status-box-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/>
+                                            <line x1="12" y1="2" x2="12" y2="4"/>
+                                            <line x1="12" y1="20" x2="12" y2="22"/>
+                                        </svg>
+                                    </div>
+                                    <div class="status-box-info">
+                                        <span class="status-box-label">Temperature</span>
+                                        <span class="status-box-value">32°C</span>
+                                    </div>
+                                </div>
+                                <div class="status-box">
+                                    <div class="status-box-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3"/>
+                                            <path d="M9 9a3 3 0 1 0 0 6"/>
+                                            <path d="M9 3v6"/>
+                                            <path d="M9 15v6"/>
+                                        </svg>
+                                    </div>
+                                    <div class="status-box-info">
+                                        <span class="status-box-label">Charging Speed</span>
+                                        <span class="status-box-value">5W</span>
+                                    </div>
+                                </div>
+                                <div class="status-box">
+                                    <div class="status-box-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <circle cx="12" cy="12" r="10"/>
+                                            <polyline points="12 6 12 12 16 14"/>
+                                        </svg>
+                                    </div>
+                                    <div class="status-box-info">
+                                        <span class="status-box-label">Time Remaining</span>
+                                        <span class="status-box-value">15 min</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Charging Frequency - Single Device -->
+                        <div class="analytics-card">
+                            <h4>Charging Frequency</h4>
+                            <div class="single-device-frequency">
+                                <div class="large-frequency-ring">
+                                    <div class="ring-container-large">
+                                        <svg class="frequency-ring-large" viewBox="0 0 100 100">
+                                            <circle class="ring-background" cx="50" cy="50" r="45" fill="none" stroke="#e0e0e0" stroke-width="6"/>
+                                            <circle class="ring-progress" cx="50" cy="50" r="45" fill="none" stroke="#00d4ff" stroke-width="6" stroke-dasharray="283" stroke-dashoffset="212" transform="rotate(-90 50 50)"/>
+                                        </svg>
+                                        <div class="ring-content-large">
+                                            <span class="ring-icon-large">⌚</span>
+                                            <span class="ring-value-large">6</span>
+                                            <span class="ring-label-large">Charges This Week</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="frequency-chart-wrapper">
+                                    <div class="chart-container">
+                                        <div class="bar-chart-enhanced">
+                                            <div class="bar-item-enhanced">
+                                                <div class="bar-wrapper">
+                                                    <div class="bar" style="height: 100%" data-value="6">
+                                                        <span class="bar-value">6</span>
+                                                    </div>
+                                                </div>
+                                                <div class="device-info-bar">
+                                                    <span class="device-icon-small">
+                                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                            <circle cx="12" cy="12" r="8"/>
+                                                            <polyline points="12 6 12 12 16 14"/>
+                                                        </svg>
+                                                    </span>
+                                                    <label>This Week</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="chart-stats">
+                                            <div class="stat-item">
+                                                <span class="stat-value">6</span>
+                                                <span class="stat-label">This Week</span>
+                                            </div>
+                                            <div class="stat-item">
+                                                <span class="stat-value">0.9 avg/day</span>
+                                                <span class="stat-label">Daily Average</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Charge History Timeline -->
+                            <div class="charge-history">
+                                <h5>Recent Charges</h5>
+                                <div class="charge-timeline">
+                                    <div class="charge-event">
+                                        <div class="charge-dot"></div>
+                                        <div class="charge-info">
+                                            <span class="charge-time">Today 8:30 AM</span>
+                                            <span class="charge-detail">95% - Fast Charge</span>
+                                        </div>
+                                    </div>
+                                    <div class="charge-event">
+                                        <div class="charge-dot"></div>
+                                        <div class="charge-info">
+                                            <span class="charge-time">Yesterday 11:20 PM</span>
+                                            <span class="charge-detail">100% - Full Charge</span>
+                                        </div>
+                                    </div>
+                                    <div class="charge-event">
+                                        <div class="charge-dot"></div>
+                                        <div class="charge-info">
+                                            <span class="charge-time">Yesterday 6:15 AM</span>
+                                            <span class="charge-detail">85% - Quick Charge</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Energy Consumption -->
+                        <div class="analytics-card">
+                            <h4>Energy Consumption (24h)</h4>
+                            <div class="line-chart">
+                                <svg class="chart-svg" viewBox="0 0 300 120">
+                                    <polyline fill="none" stroke="#ff6b6b" stroke-width="3" points="0,80 30,70 60,60 90,55 120,50 150,45 180,40 210,35 240,30 270,25 300,20"/>
+                                    <polyline fill="none" stroke="#00d4ff" stroke-width="3" points="0,100 30,75 60,55 90,45 120,40 150,38 180,35 210,32 240,28 270,25 300,22"/>
+                                </svg>
+                            </div>
+                            <div class="chart-legend">
+                                <span><span class="dot red"></span> Energy (Wh)</span>
+                                <span><span class="dot purple"></span> Speed (kW)</span>
+                            </div>
+                            <div class="chart-stats">
+                                <div class="stat-item">
+                                    <span class="stat-value">850 Wh</span>
+                                    <span class="stat-label">Total Energy</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value">2.3 hrs</span>
+                                    <span class="stat-label">Avg. Time</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Additional Stats -->
+                        <div class="analytics-card">
+                            <h4>Device Statistics</h4>
+                            <div class="stats-grid">
+                                <div class="mini-stat">
+                                    <span class="mini-stat-value">12</span>
+                                    <span class="mini-stat-label">Charges This Week</span>
+                                </div>
+                                <div class="mini-stat">
+                                    <span class="mini-stat-value">48 hrs</span>
+                                    <span class="mini-stat-label">Total Charge Time</span>
+                                </div>
+                                <div class="mini-stat">
+                                    <span class="mini-stat-value">2.1kW</span>
+                                    <span class="mini-stat-label">Peak Power</span>
+                                </div>
+                                <div class="mini-stat">
+                                    <span class="mini-stat-value">92%</span>
+                                    <span class="mini-stat-label">Battery Health</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav-bar">
+                        <span class="nav-icon" onclick="showScreen(13)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                        </span>
+                        <span class="nav-icon" onclick="showScreen(26)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                            </svg>
+                        </span>
+                        <span class="nav-icon" onclick="showScreen(8)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 8: Settings -->
+            <div class="screen screen-main-page" id="screen-8">
+                <div class="phone-frame">
+                    <div class="status-bar">
+                        <div class="dynamic-island"></div>
+                        <div class="status-bar-left">
+                            <span class="status-time">9:41</span>
+                        </div>
+                        <div class="status-bar-right">
+                            <div class="signal-icon">
+                                <svg viewBox="0 0 17 10" fill="none">
+                                    <rect x="0" y="8" width="2" height="2" fill="#000000" opacity="0.3"/>
+                                    <rect x="3" y="6" width="2" height="4" fill="#000000" opacity="0.5"/>
+                                    <rect x="6" y="4" width="2" height="6" fill="#000000" opacity="0.7"/>
+                                    <rect x="9" y="2" width="2" height="8" fill="#000000" opacity="1"/>
+                                    <rect x="12" y="0" width="2" height="10" fill="#000000" opacity="1"/>
+                                </svg>
+                            </div>
+                            <div class="wifi-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                                    <line x1="12" y1="20" x2="12.01" y2="20"/>
+                                </svg>
+                            </div>
+                            <div class="battery-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="6" width="18" height="12" rx="2" ry="2"/>
+                                    <line x1="23" y1="13" x2="23" y2="11"/>
+                                    <rect x="3" y="8" width="14" height="8" rx="1" fill="#000000"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="screen-content">
+                        <div class="top-bar">
+                            <h3>Settings</h3>
+                        </div>
+                        <div class="settings-section">
+                            <h4>Account Settings</h4>
+                            <div class="settings-item" onclick="showScreen(11)">
+                                <span>Edit profile</span>
+                                <span class="arrow">→</span>
+                            </div>
+                            <div class="settings-item" onclick="showScreen(25)">
+                                <span>Change password</span>
+                                <span class="arrow">→</span>
+                            </div>
+                            <div class="settings-item">
+                                <span>Change language</span>
+                                <span class="arrow">→</span>
+                            </div>
+                        </div>
+                        <div class="settings-section">
+                            <div class="settings-item">
+                                <span>Push notifications</span>
+                                <input type="checkbox" checked class="toggle">
+                            </div>
+                            <div class="settings-item">
+                                <span>Dark mode</span>
+                                <input type="checkbox" class="toggle">
+                            </div>
+                        </div>
+                        <div class="settings-section">
+                            <h4>More</h4>
+                            <div class="settings-item">
+                                <span>About us</span>
+                                <span class="arrow">→</span>
+                            </div>
+                            <div class="settings-item">
+                                <span>Privacy policy</span>
+                                <span class="arrow">→</span>
+                            </div>
+                            <div class="settings-item">
+                                <span>Terms and conditions</span>
+                                <span class="arrow">→</span>
+                            </div>
+                        </div>
+                        <div class="settings-section">
+                            <div class="settings-item settings-item-logout" onclick="logout()">
+                                <span>Logout</span>
+                                <span class="arrow">→</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav-bar">
+                        <span class="nav-icon" onclick="showScreen(13)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                        </span>
+                        <span class="nav-icon" onclick="showScreen(26)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                            </svg>
+                        </span>
+                        <span class="nav-icon active">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 9: Login Alternative -->
+            <div class="screen" id="screen-9">
+                <div class="phone-frame">
+                    <div class="status-bar">
+                        <div class="dynamic-island"></div>
+                        <div class="status-bar-left">
+                            <span class="status-time">9:41</span>
+                        </div>
+                        <div class="status-bar-right">
+                            <div class="signal-icon">
+                                <svg viewBox="0 0 17 10" fill="none">
+                                    <rect x="0" y="8" width="2" height="2" fill="#000000" opacity="0.3"/>
+                                    <rect x="3" y="6" width="2" height="4" fill="#000000" opacity="0.5"/>
+                                    <rect x="6" y="4" width="2" height="6" fill="#000000" opacity="0.7"/>
+                                    <rect x="9" y="2" width="2" height="8" fill="#000000" opacity="1"/>
+                                    <rect x="12" y="0" width="2" height="10" fill="#000000" opacity="1"/>
+                                </svg>
+                            </div>
+                            <div class="wifi-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                                    <line x1="12" y1="20" x2="12.01" y2="20"/>
+                                </svg>
+                            </div>
+                            <div class="battery-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="6" width="18" height="12" rx="2" ry="2"/>
+                                    <line x1="23" y1="13" x2="23" y2="11"/>
+                                    <rect x="3" y="8" width="14" height="8" rx="1" fill="#000000"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="top-app-bar">
+                        <div class="back-button" onclick="showScreen(1)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7"/>
+                            </svg>
+                        </div>
+                        <h2 class="page-title">Log In</h2>
+                    </div>
+                    <div class="screen-content has-top-bar">
+                        <div id="login-success-message" class="success-message" style="display: none;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>Your password was updated.</span>
+                        </div>
+                        <div class="app-logo-small">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                            </svg>
+                        </div>
+                        <h2>Log In</h2>
+                        <input type="email" placeholder="Email Address or Mobile Number">
+                        <input type="password" placeholder="Password">
+                        <p class="link-text-left" onclick="showScreen(14)">Forgot Password</p>
+                        <button class="btn-social">G Sign in with Google</button>
+                        <button class="btn btn-primary btn-full" onclick="showScreen(12)">Login</button>
+                        <p class="link-text">Don't have an account? <span onclick="showScreen(2)" class="link">Sign Up</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 10: Loading -->
+            <div class="screen" id="screen-10">
+                <div class="phone-frame">
+                    <div class="status-bar">
+                        <div class="dynamic-island"></div>
+                        <div class="status-bar-left">
+                            <span class="status-time">9:41</span>
+                        </div>
+                        <div class="status-bar-right">
+                            <div class="signal-icon">
+                                <svg viewBox="0 0 17 10" fill="none">
+                                    <rect x="0" y="8" width="2" height="2" fill="#000000" opacity="0.3"/>
+                                    <rect x="3" y="6" width="2" height="4" fill="#000000" opacity="0.5"/>
+                                    <rect x="6" y="4" width="2" height="6" fill="#000000" opacity="0.7"/>
+                                    <rect x="9" y="2" width="2" height="8" fill="#000000" opacity="1"/>
+                                    <rect x="12" y="0" width="2" height="10" fill="#000000" opacity="1"/>
+                                </svg>
+                            </div>
+                            <div class="wifi-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                                    <line x1="12" y1="20" x2="12.01" y2="20"/>
+                                </svg>
+                            </div>
+                            <div class="battery-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="6" width="18" height="12" rx="2" ry="2"/>
+                                    <line x1="23" y1="13" x2="23" y2="11"/>
+                                    <rect x="3" y="8" width="14" height="8" rx="1" fill="#000000"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="screen-content loading">
+                        <h3>Loading...</h3>
+                        <div class="spinner"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 11: My Profile -->
+            <div class="screen" id="screen-11">
+                <div class="phone-frame">
+                    <div class="status-bar">
+                        <div class="dynamic-island"></div>
+                        <div class="status-bar-left">
+                            <span class="status-time">9:41</span>
+                        </div>
+                        <div class="status-bar-right">
+                            <div class="signal-icon">
+                                <svg viewBox="0 0 17 10" fill="none">
+                                    <rect x="0" y="8" width="2" height="2" fill="#000000" opacity="0.3"/>
+                                    <rect x="3" y="6" width="2" height="4" fill="#000000" opacity="0.5"/>
+                                    <rect x="6" y="4" width="2" height="6" fill="#000000" opacity="0.7"/>
+                                    <rect x="9" y="2" width="2" height="8" fill="#000000" opacity="1"/>
+                                    <rect x="12" y="0" width="2" height="10" fill="#000000" opacity="1"/>
+                                </svg>
+                            </div>
+                            <div class="wifi-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                                    <line x1="12" y1="20" x2="12.01" y2="20"/>
+                                </svg>
+                            </div>
+                            <div class="battery-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="6" width="18" height="12" rx="2" ry="2"/>
+                                    <line x1="23" y1="13" x2="23" y2="11"/>
+                                    <rect x="3" y="8" width="14" height="8" rx="1" fill="#000000"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="top-app-bar">
+                        <div class="back-button" onclick="showScreen(8)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7"/>
+                            </svg>
+                        </div>
+                        <h2 class="page-title">My Profile</h2>
+                    </div>
+                    <div class="screen-content has-top-bar">
+                        <div class="profile-avatar">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                        </div>
+                        <p class="profile-text">Edit your information</p>
+                        <input type="text" value="Huda Ali Alessa" id="profile-name">
+                        <input type="email" value="Huda-3@hotmail.com" id="profile-email">
+                        <input type="tel" value="0568461548" id="profile-phone">
+                        <input type="password" value="••••••••" id="profile-password">
+                        <div id="profile-success-message" class="success-message" style="display: none;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>Profile updated successfully.</span>
+                        </div>
+                        <button class="btn btn-primary btn-full" onclick="updateProfile()">Update</button>
+                    </div>
+                    <div class="nav-bar">
+                        <span class="nav-icon" onclick="showScreen(13)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                        </span>
+                        <span class="nav-icon" onclick="showScreen(26)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                            </svg>
+                        </span>
+                        <span class="nav-icon" onclick="showScreen(8)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 12: Loading transition -->
+            <div class="screen" id="screen-12">
+                <div class="phone-frame">
+                    <div class="status-bar">
+                        <div class="dynamic-island"></div>
+                        <div class="status-bar-left">
+                            <span class="status-time">9:41</span>
+                        </div>
+                        <div class="status-bar-right">
+                            <div class="signal-icon">
+                                <svg viewBox="0 0 17 10" fill="none">
+                                    <rect x="0" y="8" width="2" height="2" fill="#000000" opacity="0.3"/>
+                                    <rect x="3" y="6" width="2" height="4" fill="#000000" opacity="0.5"/>
+                                    <rect x="6" y="4" width="2" height="6" fill="#000000" opacity="0.7"/>
+                                    <rect x="9" y="2" width="2" height="8" fill="#000000" opacity="1"/>
+                                    <rect x="12" y="0" width="2" height="10" fill="#000000" opacity="1"/>
+                                </svg>
+                            </div>
+                            <div class="wifi-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                                    <line x1="12" y1="20" x2="12.01" y2="20"/>
+                                </svg>
+                            </div>
+                            <div class="battery-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="6" width="18" height="12" rx="2" ry="2"/>
+                                    <line x1="23" y1="13" x2="23" y2="11"/>
+                                    <rect x="3" y="8" width="14" height="8" rx="1" fill="#000000"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="screen-content loading">
+                        <h3>Loading...</h3>
+                        <div class="spinner"></div>
+                        <p class="loading-text">Please wait...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 13: Home/Dashboard -->
+            <div class="screen screen-main-page" id="screen-13">
+                <div class="phone-frame">
+                    <div class="status-bar">
+                        <div class="dynamic-island"></div>
+                        <div class="status-bar-left">
+                            <span class="status-time">9:41</span>
+                        </div>
+                        <div class="status-bar-right">
+                            <div class="signal-icon">
+                                <svg viewBox="0 0 17 10" fill="none">
+                                    <rect x="0" y="8" width="2" height="2" fill="#000000" opacity="0.3"/>
+                                    <rect x="3" y="6" width="2" height="4" fill="#000000" opacity="0.5"/>
+                                    <rect x="6" y="4" width="2" height="6" fill="#000000" opacity="0.7"/>
+                                    <rect x="9" y="2" width="2" height="8" fill="#000000" opacity="1"/>
+                                    <rect x="12" y="0" width="2" height="10" fill="#000000" opacity="1"/>
+                                </svg>
+                            </div>
+                            <div class="wifi-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                                    <line x1="12" y1="20" x2="12.01" y2="20"/>
+                                </svg>
+                            </div>
+                            <div class="battery-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="6" width="18" height="12" rx="2" ry="2"/>
+                                    <line x1="23" y1="13" x2="23" y2="11"/>
+                                    <rect x="3" y="8" width="14" height="8" rx="1" fill="#000000"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="screen-content home-dashboard">
+                        <div class="welcome-header">
+                            <div>
+                                <h2>Hey, Huda!</h2>
+                                <p class="welcome-subtitle">Ready to manage your devices?</p>
+                            </div>
+                            <div class="notification-bell" onclick="showScreen(27)">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                                    <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                                </svg>
+                                <span class="notification-badge"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="quick-stats">
+                            <div class="stat-card gradient-1">
+                                <div class="stat-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                                    </svg>
+                                </div>
+                                <div class="stat-info">
+                                    <span class="stat-label">Active Devices</span>
+                                    <span class="stat-value-large">3</span>
+                                </div>
+                            </div>
+                            <div class="stat-card gradient-2">
+                                <div class="stat-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="1" y="6" width="18" height="12" rx="2" ry="2" stroke="white" fill="none"/>
+                                        <line x1="23" y1="13" x2="23" y2="11" stroke="white" stroke-width="2.5"/>
+                                        <rect x="3" y="8" width="13.5" height="8" rx="1" fill="white" opacity="0.9"/>
+                                    </svg>
+                                </div>
+                                <div class="stat-info">
+                                    <span class="stat-label">Avg Battery</span>
+                                    <span class="stat-value-large">75%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="main-actions-section">
+                            <h3 style="color: #333; font-size: 18px; margin-bottom: 15px;">What would you like to do?</h3>
+                            <div class="main-action-cards">
+                                <div class="main-action-card" onclick="showScreen(17)">
+                                    <div class="main-action-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                                            <line x1="12" y1="18" x2="12" y2="18"/>
+                                        </svg>
+                                    </div>
+                                    <div class="main-action-content">
+                                        <h4>Add New Device</h4>
+                                        <p>Register and connect a new device to your account</p>
+                                    </div>
+                                    <div class="main-action-arrow">›</div>
+                                </div>
+                                <div class="main-action-card" onclick="showScreen(4)">
+                                    <div class="main-action-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="18" y1="20" x2="18" y2="10"/>
+                                            <line x1="12" y1="20" x2="12" y2="4"/>
+                                            <line x1="6" y1="20" x2="6" y2="14"/>
+                                        </svg>
+                                    </div>
+                                    <div class="main-action-content">
+                                        <h4>View Analytics</h4>
+                                        <p>See detailed analytics and insights for your devices</p>
+                                    </div>
+                                    <div class="main-action-arrow">›</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="recent-activity">
+                            <h3>Recent Activity</h3>
+                            <div class="activity-list">
+                                <div class="activity-item">
+                                    <div class="activity-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                                            <line x1="12" y1="18" x2="12" y2="18"/>
+                                        </svg>
+                                    </div>
+                                    <div class="activity-info">
+                                        <strong>iPhone 15</strong>
+                                        <small>Finished charging - 85 minutes ago</small>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <circle cx="12" cy="12" r="8"/>
+                                            <polyline points="12 6 12 12 16 14"/>
+                                        </svg>
+                                    </div>
+                                    <div class="activity-info">
+                                        <strong>Apple Watch SE</strong>
+                                        <small>Started charging - 2 hours ago</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav-bar">
+                        <span class="nav-icon active">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                        </span>
+                        <span class="nav-icon" onclick="showScreen(26)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                            </svg>
+                        </span>
+                        <span class="nav-icon" onclick="showScreen(8)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 17: Add New Device -->
+            <div class="screen" id="screen-17">
+                <div class="phone-frame">
+                    <div class="status-bar">
+                        <div class="dynamic-island"></div>
+                        <div class="status-bar-left">
+                            <span class="status-time">9:41</span>
+                        </div>
+                        <div class="status-bar-right">
+                            <div class="signal-icon">
+                                <svg viewBox="0 0 17 10" fill="none">
+                                    <rect x="0" y="8" width="2" height="2" fill="#000000" opacity="0.3"/>
+                                    <rect x="3" y="6" width="2" height="4" fill="#000000" opacity="0.5"/>
+                                    <rect x="6" y="4" width="2" height="6" fill="#000000" opacity="0.7"/>
+                                    <rect x="9" y="2" width="2" height="8" fill="#000000" opacity="1"/>
+                                    <rect x="12" y="0" width="2" height="10" fill="#000000" opacity="1"/>
+                                </svg>
+                            </div>
+                            <div class="wifi-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                                    <line x1="12" y1="20" x2="12.01" y2="20"/>
+                                </svg>
+                            </div>
+                            <div class="battery-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="6" width="18" height="12" rx="2" ry="2"/>
+                                    <line x1="23" y1="13" x2="23" y2="11"/>
+                                    <rect x="3" y="8" width="14" height="8" rx="1" fill="#000000"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="top-app-bar">
+                        <div class="back-button" onclick="showScreen(13)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7"/>
+                            </svg>
+                        </div>
+                        <h2 class="page-title">Add New Device</h2>
+                    </div>
+                    <div class="screen-content has-top-bar">
+                        <div class="device-illustration">💻</div>
+                        <p class="illustration-text">Enter device information</p>
+                        <input type="text" placeholder="Device Name">
+                        <input type="text" placeholder="Device Type">
+                        <input type="text" placeholder="Device Model">
+                        <input type="text" placeholder="Device ID">
+                        <button class="btn-secondary btn-full">Scan QR Code</button>
+                        <button class="btn btn-primary btn-full" onclick="showScreen(13)">Add Device</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 14: Forgot Password -->
+            <div class="screen" id="screen-14">
+                <div class="phone-frame">
+                    <div class="status-bar">
+                        <div class="dynamic-island"></div>
+                        <div class="status-bar-left">
+                            <span class="status-time">9:41</span>
+                        </div>
+                        <div class="status-bar-right">
+                            <div class="signal-icon">
+                                <svg viewBox="0 0 17 10" fill="none">
+                                    <rect x="0" y="8" width="2" height="2" fill="#000000" opacity="0.3"/>
+                                    <rect x="3" y="6" width="2" height="4" fill="#000000" opacity="0.5"/>
+                                    <rect x="6" y="4" width="2" height="6" fill="#000000" opacity="0.7"/>
+                                    <rect x="9" y="2" width="2" height="8" fill="#000000" opacity="1"/>
+                                    <rect x="12" y="0" width="2" height="10" fill="#000000" opacity="1"/>
+                                </svg>
+                            </div>
+                            <div class="wifi-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                                    <line x1="12" y1="20" x2="12.01" y2="20"/>
+                                </svg>
+                            </div>
+                            <div class="battery-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="6" width="18" height="12" rx="2" ry="2"/>
+                                    <line x1="23" y1="13" x2="23" y2="11"/>
+                                    <rect x="3" y="8" width="14" height="8" rx="1" fill="#000000"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="top-app-bar">
+                        <div class="back-button" onclick="showScreen(9)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7"/>
+                            </svg>
+                        </div>
+                        <h2 class="page-title">Reset Password</h2>
+                    </div>
+                    <div class="screen-content has-top-bar">
+                        <p class="info-text">Enter your email to receive a reset link.</p>
+                        <input type="email" placeholder="Email Address">
+                        <button class="btn btn-primary btn-full" onclick="showScreen(15)">Continue</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 15: Verify Code -->
+            <div class="screen" id="screen-15">
+                <div class="phone-frame">
+                    <div class="status-bar">
+                        <div class="dynamic-island"></div>
+                        <div class="status-bar-left">
+                            <span class="status-time">9:41</span>
+                        </div>
+                        <div class="status-bar-right">
+                            <div class="signal-icon">
+                                <svg viewBox="0 0 17 10" fill="none">
+                                    <rect x="0" y="8" width="2" height="2" fill="#000000" opacity="0.3"/>
+                                    <rect x="3" y="6" width="2" height="4" fill="#000000" opacity="0.5"/>
+                                    <rect x="6" y="4" width="2" height="6" fill="#000000" opacity="0.7"/>
+                                    <rect x="9" y="2" width="2" height="8" fill="#000000" opacity="1"/>
+                                    <rect x="12" y="0" width="2" height="10" fill="#000000" opacity="1"/>
+                                </svg>
+                            </div>
+                            <div class="wifi-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                                    <line x1="12" y1="20" x2="12.01" y2="20"/>
+                                </svg>
+                            </div>
+                            <div class="battery-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="6" width="18" height="12" rx="2" ry="2"/>
+                                    <line x1="23" y1="13" x2="23" y2="11"/>
+                                    <rect x="3" y="8" width="14" height="8" rx="1" fill="#000000"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="top-app-bar">
+                        <div class="back-button" onclick="showScreen(14)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7"/>
+                            </svg>
+                        </div>
+                        <h2 class="page-title">Verify Code</h2>
+                    </div>
+                    <div class="screen-content has-top-bar">
+                        <p class="info-text">Enter the 4-digit code sent to your email</p>
+                        <div class="code-input">
+                            <input type="text" maxlength="1" class="code-box">
+                            <input type="text" maxlength="1" class="code-box">
+                            <input type="text" maxlength="1" class="code-box">
+                            <input type="text" maxlength="1" class="code-box">
+                        </div>
+                        <button class="btn btn-primary btn-full" onclick="showScreen(16)">Verify</button>
+                        <p class="link-text">Didn't receive? <span class="link">Resend</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 18: Smart Charging -->
+            <div class="screen" id="screen-18">
+                <div class="phone-frame">
+                    <div class="status-bar">
+                        <div class="dynamic-island"></div>
+                        <div class="status-bar-left">
+                            <span class="status-time">9:41</span>
+                        </div>
+                        <div class="status-bar-right">
+                            <div class="signal-icon">
+                                <svg viewBox="0 0 17 10" fill="none">
+                                    <rect x="0" y="8" width="2" height="2" fill="#000000" opacity="0.3"/>
+                                    <rect x="3" y="6" width="2" height="4" fill="#000000" opacity="0.5"/>
+                                    <rect x="6" y="4" width="2" height="6" fill="#000000" opacity="0.7"/>
+                                    <rect x="9" y="2" width="2" height="8" fill="#000000" opacity="1"/>
+                                    <rect x="12" y="0" width="2" height="10" fill="#000000" opacity="1"/>
+                                </svg>
+                            </div>
+                            <div class="wifi-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                                    <line x1="12" y1="20" x2="12.01" y2="20"/>
+                                </svg>
+                            </div>
+                            <div class="battery-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="6" width="18" height="12" rx="2" ry="2"/>
+                                    <line x1="23" y1="13" x2="23" y2="11"/>
+                                    <rect x="3" y="8" width="14" height="8" rx="1" fill="#000000"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="top-app-bar">
+                        <div class="back-button" onclick="goBackToDevice()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7"/>
+                            </svg>
+                        </div>
+                        <h2 class="page-title">Smart Charging</h2>
+                    </div>
+                    <div class="screen-content has-top-bar">
+                        <div class="smart-charging-section">
+                            <div class="smart-charge-card">
+                                <div class="smart-charge-header">
+                                    <h4>AI Charging Optimization</h4>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="ai-optimization">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                                <p class="smart-charge-description">Let SafeCharge AI learn your daily usage habits and automatically pause charging at 80%—then resume at the optimal time before you unplug. This helps protect battery health using intelligent prediction.</p>
+                            </div>
+                            <div class="smart-charge-card">
+                                <div class="smart-charge-header">
+                                    <h4>Charging Timer</h4>
+                                </div>
+                                <div class="timer-selector">
+                                    <select class="timer-dropdown">
+                                        <option>No timer</option>
+                                        <option>30 minutes</option>
+                                        <option>1 hour</option>
+                                        <option>2 hours</option>
+                                        <option>3 hours</option>
+                                        <option>4 hours</option>
+                                        <option>Custom</option>
+                                    </select>
+                                </div>
+                                <p class="smart-charge-description">Set a timer to automatically stop charging after the specified duration. This helps prevent overcharging and extends your battery lifespan.</p>
+                            </div>
+                            <button class="btn btn-primary btn-full" style="margin-top: 20px;">Apply Settings</button>
+                        </div>
+                    </div>
+                    <div class="nav-bar">
+                        <span class="nav-icon" onclick="showScreen(13)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                        </span>
+                        <span class="nav-icon" onclick="showScreen(26)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                            </svg>
+                        </span>
+                        <span class="nav-icon" onclick="showScreen(8)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 19: iPhone 15 Detail -->
+            <div class="screen" id="screen-19">
+                <div class="phone-frame">
+                    <div class="status-bar">
+                        <div class="dynamic-island"></div>
+                        <div class="status-bar-left">
+                            <span class="status-time">9:41</span>
+                        </div>
+                        <div class="status-bar-right">
+                            <div class="signal-icon">
+                                <svg viewBox="0 0 17 10" fill="none">
+                                    <rect x="0" y="8" width="2" height="2" fill="#000000" opacity="0.3"/>
+                                    <rect x="3" y="6" width="2" height="4" fill="#000000" opacity="0.5"/>
+                                    <rect x="6" y="4" width="2" height="6" fill="#000000" opacity="0.7"/>
+                                    <rect x="9" y="2" width="2" height="8" fill="#000000" opacity="1"/>
+                                    <rect x="12" y="0" width="2" height="10" fill="#000000" opacity="1"/>
+                                </svg>
+                            </div>
+                            <div class="wifi-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                                    <line x1="12" y1="20" x2="12.01" y2="20"/>
+                                </svg>
+                            </div>
+                            <div class="battery-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="6" width="18" height="12" rx="2" ry="2"/>
+                                    <line x1="23" y1="13" x2="23" y2="11"/>
+                                    <rect x="3" y="8" width="14" height="8" rx="1" fill="#000000"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="top-app-bar">
+                        <div class="back-button" onclick="showScreen(4)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7"/>
+                            </svg>
+                        </div>
+                        <h2 class="page-title">iPhone 15</h2>
+                    </div>
+                    <div class="screen-content has-top-bar">
+                        <div class="device-detail-info">
+                            <div class="device-status-large">
+                                <div class="device-status-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                                        <line x1="12" y1="18" x2="12" y2="18"/>
+                                    </svg>
+                                </div>
+                                <div class="device-status-details">
+                                    <h4>iPhone 15</h4>
+                                    <p class="device-status-text"><span class="inline-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="18" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/><rect x="3" y="8" width="14" height="8" rx="1" fill="currentColor" opacity="0.85"/></svg></span> Charging - 85% • 1.5h remaining</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="collapsible-section" onclick="showScreen(22)">
+                            <div class="section-header">
+                                <h4>Analytics Dashboard</h4>
+                                <span class="arrow">→</span>
+                            </div>
+                        </div>
+                        <div class="collapsible-section" onclick="showScreen(18)">
+                            <div class="section-header">
+                                <h4>Smart Charging</h4>
+                                <span class="arrow">→</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav-bar">
+                        <span class="nav-icon" onclick="showScreen(13)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                        </span>
+                        <span class="nav-icon" onclick="showScreen(26)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                            </svg>
+                        </span>
+                        <span class="nav-icon" onclick="showScreen(8)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 20: MacBook Pro Detail -->
+            <div class="screen" id="screen-20">
+                <div class="phone-frame">
+                    <div class="status-bar">
+                        <div class="dynamic-island"></div>
+                        <div class="status-bar-left">
+                            <span class="status-time">9:41</span>
+                        </div>
+                        <div class="status-bar-right">
+                            <div class="signal-icon">
+                                <svg viewBox="0 0 17 10" fill="none">
+                                    <rect x="0" y="8" width="2" height="2" fill="#000000" opacity="0.3"/>
+                                    <rect x="3" y="6" width="2" height="4" fill="#000000" opacity="0.5"/>
+                                    <rect x="6" y="4" width="2" height="6" fill="#000000" opacity="0.7"/>
+                                    <rect x="9" y="2" width="2" height="8" fill="#000000" opacity="1"/>
+                                    <rect x="12" y="0" width="2" height="10" fill="#000000" opacity="1"/>
+                                </svg>
+                            </div>
+                            <div class="wifi-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                                    <line x1="12" y1="20" x2="12.01" y2="20"/>
+                                </svg>
+                            </div>
+                            <div class="battery-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="6" width="18" height="12" rx="2" ry="2"/>
+                                    <line x1="23" y1="13" x2="23" y2="11"/>
+                                    <rect x="3" y="8" width="14" height="8" rx="1" fill="#000000"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="top-app-bar">
+                        <div class="back-button" onclick="showScreen(4)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7"/>
+                            </svg>
+                        </div>
+                        <h2 class="page-title">MacBook Pro</h2>
+                    </div>
+                    <div class="screen-content has-top-bar">
+                        <div class="device-detail-info">
+                            <div class="device-status-large">
+                                <div class="device-status-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="4" width="20" height="12" rx="2" ry="2"/>
+                                        <line x1="2" y1="16" x2="22" y2="16"/>
+                                        <line x1="6" y1="8" x2="6" y2="8"/>
+                                    </svg>
+                                </div>
+                                <div class="device-status-details">
+                                    <h4>MacBook Pro</h4>
+                                    <p class="device-status-text"><span class="inline-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></span> Connected - 42% • Not charging</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="collapsible-section" onclick="showScreen(23)">
+                            <div class="section-header">
+                                <h4>Analytics Dashboard</h4>
+                                <span class="arrow">→</span>
+                            </div>
+                        </div>
+                        <div class="collapsible-section" onclick="showScreen(18)">
+                            <div class="section-header">
+                                <h4>Smart Charging</h4>
+                                <span class="arrow">→</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav-bar">
+                        <span class="nav-icon" onclick="showScreen(13)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                        </span>
+                        <span class="nav-icon" onclick="showScreen(26)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                            </svg>
+                        </span>
+                        <span class="nav-icon" onclick="showScreen(8)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 21: Odyssey G6 Detail -->
+            <div class="screen" id="screen-21">
+                <div class="phone-frame">
+                    <div class="status-bar">
+                        <div class="dynamic-island"></div>
+                        <div class="status-bar-left">
+                            <span class="status-time">9:41</span>
+                        </div>
+                        <div class="status-bar-right">
+                            <div class="signal-icon">
+                                <svg viewBox="0 0 17 10" fill="none">
+                                    <rect x="0" y="8" width="2" height="2" fill="#000000" opacity="0.3"/>
+                                    <rect x="3" y="6" width="2" height="4" fill="#000000" opacity="0.5"/>
+                                    <rect x="6" y="4" width="2" height="6" fill="#000000" opacity="0.7"/>
+                                    <rect x="9" y="2" width="2" height="8" fill="#000000" opacity="1"/>
+                                    <rect x="12" y="0" width="2" height="10" fill="#000000" opacity="1"/>
+                                </svg>
+                            </div>
+                            <div class="wifi-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                                    <line x1="12" y1="20" x2="12.01" y2="20"/>
+                                </svg>
+                            </div>
+                            <div class="battery-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="6" width="18" height="12" rx="2" ry="2"/>
+                                    <line x1="23" y1="13" x2="23" y2="11"/>
+                                    <rect x="3" y="8" width="14" height="8" rx="1" fill="#000000"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="top-app-bar">
+                        <div class="back-button" onclick="showScreen(4)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7"/>
+                            </svg>
+                        </div>
+                        <h2 class="page-title">Odyssey G6</h2>
+                    </div>
+                    <div class="screen-content has-top-bar">
+                        <div class="device-detail-info">
+                            <div class="device-status-large">
+                                <div class="device-status-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                        <line x1="8" y1="21" x2="16" y2="21"/>
+                                        <line x1="12" y1="17" x2="12" y2="21"/>
+                                    </svg>
+                                </div>
+                                <div class="device-status-details">
+                                    <h4>Odyssey G6</h4>
+                                    <p class="device-status-text"><span class="inline-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span> Active - 78% • Optimized</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="collapsible-section" onclick="showScreen(24)">
+                            <div class="section-header">
+                                <h4>Analytics Dashboard</h4>
+                                <span class="arrow">→</span>
+                            </div>
+                        </div>
+                        <div class="collapsible-section" onclick="showScreen(18)">
+                            <div class="section-header">
+                                <h4>Smart Charging</h4>
+                                <span class="arrow">→</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav-bar">
+                        <span class="nav-icon" onclick="showScreen(13)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                        </span>
+                        <span class="nav-icon" onclick="showScreen(26)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                            </svg>
+                        </span>
+                        <span class="nav-icon" onclick="showScreen(8)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 22: iPhone 15 Analytics -->
+            <div class="screen" id="screen-22">
+                <div class="phone-frame">
+                    <div class="status-bar">
+                        <div class="dynamic-island"></div>
+                        <div class="status-bar-left">
+                            <span class="status-time">9:41</span>
+                        </div>
+                        <div class="status-bar-right">
+                            <div class="signal-icon">
+                                <svg viewBox="0 0 17 10" fill="none">
+                                    <rect x="0" y="8" width="2" height="2" fill="#000000" opacity="0.3"/>
+                                    <rect x="3" y="6" width="2" height="4" fill="#000000" opacity="0.5"/>
+                                    <rect x="6" y="4" width="2" height="6" fill="#000000" opacity="0.7"/>
+                                    <rect x="9" y="2" width="2" height="8" fill="#000000" opacity="1"/>
+                                    <rect x="12" y="0" width="2" height="10" fill="#000000" opacity="1"/>
+                                </svg>
+                            </div>
+                            <div class="wifi-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                                    <line x1="12" y1="20" x2="12.01" y2="20"/>
+                                </svg>
+                            </div>
+                            <div class="battery-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="6" width="18" height="12" rx="2" ry="2"/>
+                                    <line x1="23" y1="13" x2="23" y2="11"/>
+                                    <rect x="3" y="8" width="14" height="8" rx="1" fill="#000000"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="top-app-bar">
+                        <div class="back-button" onclick="showScreen(19)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7"/>
+                            </svg>
+                        </div>
+                        <h2 class="page-title">iPhone 15 Analytics</h2>
+                    </div>
+                    <div class="screen-content has-top-bar">
+                        <div class="analytics-card">
+                            <h4>Current Status</h4>
+                            <div class="status-grid">
+                                <div class="status-box">
+                                    <div class="status-box-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="1" y="6" width="18" height="12" rx="2" ry="2"/>
+                                            <line x1="23" y1="13" x2="23" y2="11"/>
+                                            <rect x="3" y="8" width="14" height="8" rx="1" fill="currentColor" opacity="0.85"/>
+                                        </svg>
+                                    </div>
+                                    <div class="status-box-info">
+                                        <span class="status-box-label">Charge Level</span>
+                                        <span class="status-box-value">85%</span>
+                                    </div>
+                                </div>
+                                <div class="status-box">
+                                    <div class="status-box-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/>
+                                            <line x1="12" y1="2" x2="12" y2="4"/>
+                                            <line x1="12" y1="20" x2="12" y2="22"/>
+                                        </svg>
+                                    </div>
+                                    <div class="status-box-info">
+                                        <span class="status-box-label">Temperature</span>
+                                        <span class="status-box-value">35°C</span>
+                                    </div>
+                                </div>
+                                <div class="status-box">
+                                    <div class="status-box-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3"/>
+                                            <path d="M9 9a3 3 0 1 0 0 6"/>
+                                            <path d="M9 3v6"/>
+                                            <path d="M9 15v6"/>
+                                        </svg>
+                                    </div>
+                                    <div class="status-box-info">
+                                        <span class="status-box-label">Charging Speed</span>
+                                        <span class="status-box-value">20W</span>
+                                    </div>
+                                </div>
+                                <div class="status-box">
+                                    <div class="status-box-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <circle cx="12" cy="12" r="10"/>
+                                            <polyline points="12 6 12 12 16 14"/>
+                                        </svg>
+                                    </div>
+                                    <div class="status-box-info">
+                                        <span class="status-box-label">Time Remaining</span>
+                                        <span class="status-box-value">1.5h</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="analytics-card">
+                            <h4>Charging Frequency</h4>
+                            <div class="single-device-frequency">
+                                <div class="large-frequency-ring">
+                                    <div class="ring-container-large">
+                                        <svg class="frequency-ring-large" viewBox="0 0 100 100">
+                                            <circle class="ring-background" cx="50" cy="50" r="45" fill="none" stroke="#e0e0e0" stroke-width="6"/>
+                                            <circle class="ring-progress" cx="50" cy="50" r="45" fill="none" stroke="#00d4ff" stroke-width="6" stroke-dasharray="283" stroke-dashoffset="42" transform="rotate(-90 50 50)"/>
+                                        </svg>
+                                        <div class="ring-content-large">
+                                            <span class="ring-icon-large">📱</span>
+                                            <span class="ring-value-large">12</span>
+                                            <span class="ring-label-large">Charges This Week</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="frequency-chart-wrapper">
+                                    <div class="chart-container">
+                                        <div class="bar-chart-enhanced">
+                                            <div class="bar-item-enhanced">
+                                                <div class="bar-wrapper">
+                                                    <div class="bar" style="height: 100%" data-value="12">
+                                                        <span class="bar-value">12</span>
+                                                    </div>
+                                                </div>
+                                                <div class="device-info-bar">
+                                                    <span class="device-icon-small">
+                                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                                                            <line x1="12" y1="18" x2="12" y2="18"/>
+                                                        </svg>
+                                                    </span>
+                                                    <label>This Week</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="chart-stats">
+                                            <div class="stat-item">
+                                                <span class="stat-value">12</span>
+                                                <span class="stat-label">This Week</span>
+                                            </div>
+                                            <div class="stat-item">
+                                                <span class="stat-value">1.7 avg/day</span>
+                                                <span class="stat-label">Daily Average</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="charge-history">
+                                <h5>Recent Charges</h5>
+                                <div class="charge-timeline">
+                                    <div class="charge-event">
+                                        <div class="charge-dot"></div>
+                                        <div class="charge-info">
+                                            <span class="charge-time">Today 2:15 PM</span>
+                                            <span class="charge-detail">85% - Fast Charge</span>
+                                        </div>
+                                    </div>
+                                    <div class="charge-event">
+                                        <div class="charge-dot"></div>
+                                        <div class="charge-info">
+                                            <span class="charge-time">Today 9:00 AM</span>
+                                            <span class="charge-detail">100% - Full Charge</span>
+                                        </div>
+                                    </div>
+                                    <div class="charge-event">
+                                        <div class="charge-dot"></div>
+                                        <div class="charge-info">
+                                            <span class="charge-time">Yesterday 10:30 PM</span>
+                                            <span class="charge-detail">90% - Overnight Charge</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="analytics-card">
+                            <h4>Energy Consumption (24h)</h4>
+                            <div class="line-chart">
+                                <svg class="chart-svg" viewBox="0 0 300 120">
+                                    <polyline fill="none" stroke="#ff6b6b" stroke-width="3" points="0,90 30,75 60,65 90,55 120,50 150,45 180,40 210,38 240,35 270,32 300,30"/>
+                                    <polyline fill="none" stroke="#00d4ff" stroke-width="3" points="0,100 30,85 60,70 90,60 120,55 150,50 180,45 210,40 240,38 270,35 300,33"/>
+                                </svg>
+                            </div>
+                            <div class="chart-legend">
+                                <span><span class="dot red"></span> Energy (Wh)</span>
+                                <span><span class="dot purple"></span> Speed (kW)</span>
+                            </div>
+                            <div class="chart-stats">
+                                <div class="stat-item">
+                                    <span class="stat-value">420 Wh</span>
+                                    <span class="stat-label">Total Energy</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value">1.8 hrs</span>
+                                    <span class="stat-label">Avg. Time</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav-bar">
+                        <span class="nav-icon" onclick="showScreen(13)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                        </span>
+                        <span class="nav-icon" onclick="showScreen(26)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                            </svg>
+                        </span>
+                        <span class="nav-icon" onclick="showScreen(8)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 23: MacBook Pro Analytics -->
+            <div class="screen" id="screen-23">
+                <div class="phone-frame">
+                    <div class="status-bar">
+                        <div class="dynamic-island"></div>
+                        <div class="status-bar-left">
+                            <span class="status-time">9:41</span>
+                        </div>
+                        <div class="status-bar-right">
+                            <div class="signal-icon">
+                                <svg viewBox="0 0 17 10" fill="none">
+                                    <rect x="0" y="8" width="2" height="2" fill="#000000" opacity="0.3"/>
+                                    <rect x="3" y="6" width="2" height="4" fill="#000000" opacity="0.5"/>
+                                    <rect x="6" y="4" width="2" height="6" fill="#000000" opacity="0.7"/>
+                                    <rect x="9" y="2" width="2" height="8" fill="#000000" opacity="1"/>
+                                    <rect x="12" y="0" width="2" height="10" fill="#000000" opacity="1"/>
+                                </svg>
+                            </div>
+                            <div class="wifi-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                                    <line x1="12" y1="20" x2="12.01" y2="20"/>
+                                </svg>
+                            </div>
+                            <div class="battery-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="6" width="18" height="12" rx="2" ry="2"/>
+                                    <line x1="23" y1="13" x2="23" y2="11"/>
+                                    <rect x="3" y="8" width="14" height="8" rx="1" fill="#000000"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="top-app-bar">
+                        <div class="back-button" onclick="showScreen(20)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7"/>
+                            </svg>
+                        </div>
+                        <h2 class="page-title">MacBook Pro Analytics</h2>
+                    </div>
+                    <div class="screen-content has-top-bar">
+                        <div class="analytics-card">
+                            <h4>Current Status</h4>
+                            <div class="status-grid">
+                                <div class="status-box">
+                                    <div class="status-box-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="1" y="6" width="18" height="12" rx="2" ry="2"/>
+                                            <line x1="23" y1="13" x2="23" y2="11"/>
+                                            <rect x="3" y="8" width="8" height="8" rx="1" fill="currentColor" opacity="0.42"/>
+                                        </svg>
+                                    </div>
+                                    <div class="status-box-info">
+                                        <span class="status-box-label">Charge Level</span>
+                                        <span class="status-box-value">42%</span>
+                                    </div>
+                                </div>
+                                <div class="status-box">
+                                    <div class="status-box-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/>
+                                            <line x1="12" y1="2" x2="12" y2="4"/>
+                                            <line x1="12" y1="20" x2="12" y2="22"/>
+                                        </svg>
+                                    </div>
+                                    <div class="status-box-info">
+                                        <span class="status-box-label">Temperature</span>
+                                        <span class="status-box-value">38°C</span>
+                                    </div>
+                                </div>
+                                <div class="status-box">
+                                    <div class="status-box-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3"/>
+                                            <path d="M9 9a3 3 0 1 0 0 6"/>
+                                            <path d="M9 3v6"/>
+                                            <path d="M9 15v6"/>
+                                        </svg>
+                                    </div>
+                                    <div class="status-box-info">
+                                        <span class="status-box-label">Charging Speed</span>
+                                        <span class="status-box-value">0W</span>
+                                    </div>
+                                </div>
+                                <div class="status-box">
+                                    <div class="status-box-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <circle cx="12" cy="12" r="10"/>
+                                            <polyline points="12 6 12 12 16 14"/>
+                                        </svg>
+                                    </div>
+                                    <div class="status-box-info">
+                                        <span class="status-box-label">Status</span>
+                                        <span class="status-box-value">Idle</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="analytics-card">
+                            <h4>Charging Frequency</h4>
+                            <div class="single-device-frequency">
+                                <div class="large-frequency-ring">
+                                    <div class="ring-container-large">
+                                        <svg class="frequency-ring-large" viewBox="0 0 100 100">
+                                            <circle class="ring-background" cx="50" cy="50" r="45" fill="none" stroke="#e0e0e0" stroke-width="6"/>
+                                            <circle class="ring-progress" cx="50" cy="50" r="45" fill="none" stroke="#00b8d4" stroke-width="6" stroke-dasharray="283" stroke-dashoffset="141" transform="rotate(-90 50 50)"/>
+                                        </svg>
+                                        <div class="ring-content-large">
+                                            <span class="ring-icon-large">💻</span>
+                                            <span class="ring-value-large">8</span>
+                                            <span class="ring-label-large">Charges This Week</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="frequency-chart-wrapper">
+                                    <div class="chart-container">
+                                        <div class="bar-chart-enhanced">
+                                            <div class="bar-item-enhanced">
+                                                <div class="bar-wrapper">
+                                                    <div class="bar" style="height: 67%" data-value="8">
+                                                        <span class="bar-value">8</span>
+                                                    </div>
+                                                </div>
+                                                <div class="device-info-bar">
+                                                    <span class="device-icon-small">
+                                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                            <rect x="2" y="4" width="20" height="12" rx="2" ry="2"/>
+                                                            <line x1="2" y1="16" x2="22" y2="16"/>
+                                                            <line x1="6" y1="8" x2="6" y2="8"/>
+                                                        </svg>
+                                                    </span>
+                                                    <label>This Week</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="chart-stats">
+                                            <div class="stat-item">
+                                                <span class="stat-value">8</span>
+                                                <span class="stat-label">This Week</span>
+                                            </div>
+                                            <div class="stat-item">
+                                                <span class="stat-value">1.1 avg/day</span>
+                                                <span class="stat-label">Daily Average</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="charge-history">
+                                <h5>Recent Charges</h5>
+                                <div class="charge-timeline">
+                                    <div class="charge-event">
+                                        <div class="charge-dot"></div>
+                                        <div class="charge-info">
+                                            <span class="charge-time">Yesterday 8:00 PM</span>
+                                            <span class="charge-detail">100% - Full Charge</span>
+                                        </div>
+                                    </div>
+                                    <div class="charge-event">
+                                        <div class="charge-dot"></div>
+                                        <div class="charge-info">
+                                            <span class="charge-time">Yesterday 1:00 PM</span>
+                                            <span class="charge-detail">85% - Quick Charge</span>
+                                        </div>
+                                    </div>
+                                    <div class="charge-event">
+                                        <div class="charge-dot"></div>
+                                        <div class="charge-info">
+                                            <span class="charge-time">2 days ago 10:00 AM</span>
+                                            <span class="charge-detail">90% - Overnight Charge</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="analytics-card">
+                            <h4>Energy Consumption (24h)</h4>
+                            <div class="line-chart">
+                                <svg class="chart-svg" viewBox="0 0 300 120">
+                                    <polyline fill="none" stroke="#ff6b6b" stroke-width="3" points="0,95 30,90 60,85 90,80 120,75 150,70 180,68 210,65 240,63 270,60 300,58"/>
+                                    <polyline fill="none" stroke="#00d4ff" stroke-width="3" points="0,100 30,95 60,90 90,85 120,80 150,75 180,72 210,70 240,68 270,65 300,63"/>
+                                </svg>
+                            </div>
+                            <div class="chart-legend">
+                                <span><span class="dot red"></span> Energy (Wh)</span>
+                                <span><span class="dot purple"></span> Speed (kW)</span>
+                            </div>
+                            <div class="chart-stats">
+                                <div class="stat-item">
+                                    <span class="stat-value">180 Wh</span>
+                                    <span class="stat-label">Total Energy</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value">3.2 hrs</span>
+                                    <span class="stat-label">Avg. Time</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav-bar">
+                        <span class="nav-icon" onclick="showScreen(13)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                        </span>
+                        <span class="nav-icon" onclick="showScreen(26)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                            </svg>
+                        </span>
+                        <span class="nav-icon" onclick="showScreen(8)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 24: Odyssey G6 Analytics -->
+            <div class="screen" id="screen-24">
+                <div class="phone-frame">
+                    <div class="status-bar">
+                        <div class="dynamic-island"></div>
+                        <div class="status-bar-left">
+                            <span class="status-time">9:41</span>
+                        </div>
+                        <div class="status-bar-right">
+                            <div class="signal-icon">
+                                <svg viewBox="0 0 17 10" fill="none">
+                                    <rect x="0" y="8" width="2" height="2" fill="#000000" opacity="0.3"/>
+                                    <rect x="3" y="6" width="2" height="4" fill="#000000" opacity="0.5"/>
+                                    <rect x="6" y="4" width="2" height="6" fill="#000000" opacity="0.7"/>
+                                    <rect x="9" y="2" width="2" height="8" fill="#000000" opacity="1"/>
+                                    <rect x="12" y="0" width="2" height="10" fill="#000000" opacity="1"/>
+                                </svg>
+                            </div>
+                            <div class="wifi-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                                    <line x1="12" y1="20" x2="12.01" y2="20"/>
+                                </svg>
+                            </div>
+                            <div class="battery-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="6" width="18" height="12" rx="2" ry="2"/>
+                                    <line x1="23" y1="13" x2="23" y2="11"/>
+                                    <rect x="3" y="8" width="14" height="8" rx="1" fill="#000000"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="top-app-bar">
+                        <div class="back-button" onclick="showScreen(21)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7"/>
+                            </svg>
+                        </div>
+                        <h2 class="page-title">Odyssey G6 Analytics</h2>
+                    </div>
+                    <div class="screen-content has-top-bar">
+                        <div class="analytics-card">
+                            <h4>Current Status</h4>
+                            <div class="status-grid">
+                                <div class="status-box">
+                                    <div class="status-box-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="1" y="6" width="18" height="12" rx="2" ry="2"/>
+                                            <line x1="23" y1="13" x2="23" y2="11"/>
+                                            <rect x="3" y="8" width="12" height="8" rx="1" fill="currentColor" opacity="0.78"/>
+                                        </svg>
+                                    </div>
+                                    <div class="status-box-info">
+                                        <span class="status-box-label">Charge Level</span>
+                                        <span class="status-box-value">78%</span>
+                                    </div>
+                                </div>
+                                <div class="status-box">
+                                    <div class="status-box-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/>
+                                            <line x1="12" y1="2" x2="12" y2="4"/>
+                                            <line x1="12" y1="20" x2="12" y2="22"/>
+                                        </svg>
+                                    </div>
+                                    <div class="status-box-info">
+                                        <span class="status-box-label">Temperature</span>
+                                        <span class="status-box-value">28°C</span>
+                                    </div>
+                                </div>
+                                <div class="status-box">
+                                    <div class="status-box-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3"/>
+                                            <path d="M9 9a3 3 0 1 0 0 6"/>
+                                            <path d="M9 3v6"/>
+                                            <path d="M9 15v6"/>
+                                        </svg>
+                                    </div>
+                                    <div class="status-box-info">
+                                        <span class="status-box-label">Charging Speed</span>
+                                        <span class="status-box-value">65W</span>
+                                    </div>
+                                </div>
+                                <div class="status-box">
+                                    <div class="status-box-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                                            <circle cx="12" cy="12" r="3"/>
+                                        </svg>
+                                    </div>
+                                    <div class="status-box-info">
+                                        <span class="status-box-label">Optimization</span>
+                                        <span class="status-box-value">Active</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="analytics-card">
+                            <h4>Charging Frequency</h4>
+                            <div class="single-device-frequency">
+                                <div class="large-frequency-ring">
+                                    <div class="ring-container-large">
+                                        <svg class="frequency-ring-large" viewBox="0 0 100 100">
+                                            <circle class="ring-background" cx="50" cy="50" r="45" fill="none" stroke="#e0e0e0" stroke-width="6"/>
+                                            <circle class="ring-progress" cx="50" cy="50" r="45" fill="none" stroke="#00d4ff" stroke-width="6" stroke-dasharray="283" stroke-dashoffset="14" transform="rotate(-90 50 50)"/>
+                                        </svg>
+                                        <div class="ring-content-large">
+                                            <span class="ring-icon-large">🖥️</span>
+                                            <span class="ring-value-large">14</span>
+                                            <span class="ring-label-large">Charges This Week</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="frequency-chart-wrapper">
+                                    <div class="chart-container">
+                                        <div class="bar-chart-enhanced">
+                                            <div class="bar-item-enhanced">
+                                                <div class="bar-wrapper">
+                                                    <div class="bar" style="height: 100%" data-value="14">
+                                                        <span class="bar-value">14</span>
+                                                    </div>
+                                                </div>
+                                                <div class="device-info-bar">
+                                                    <span class="device-icon-small">
+                                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                                            <line x1="8" y1="21" x2="16" y2="21"/>
+                                                            <line x1="12" y1="17" x2="12" y2="21"/>
+                                                        </svg>
+                                                    </span>
+                                                    <label>This Week</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="chart-stats">
+                                            <div class="stat-item">
+                                                <span class="stat-value">14</span>
+                                                <span class="stat-label">This Week</span>
+                                            </div>
+                                            <div class="stat-item">
+                                                <span class="stat-value">2.0 avg/day</span>
+                                                <span class="stat-label">Daily Average</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="charge-history">
+                                <h5>Recent Charges</h5>
+                                <div class="charge-timeline">
+                                    <div class="charge-event">
+                                        <div class="charge-dot"></div>
+                                        <div class="charge-info">
+                                            <span class="charge-time">Today 12:00 PM</span>
+                                            <span class="charge-detail">78% - Optimized Charge</span>
+                                        </div>
+                                    </div>
+                                    <div class="charge-event">
+                                        <div class="charge-dot"></div>
+                                        <div class="charge-info">
+                                            <span class="charge-time">Today 6:00 AM</span>
+                                            <span class="charge-detail">100% - Full Charge</span>
+                                        </div>
+                                    </div>
+                                    <div class="charge-event">
+                                        <div class="charge-dot"></div>
+                                        <div class="charge-info">
+                                            <span class="charge-time">Yesterday 11:00 PM</span>
+                                            <span class="charge-detail">85% - Smart Charge</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="analytics-card">
+                            <h4>Energy Consumption (24h)</h4>
+                            <div class="line-chart">
+                                <svg class="chart-svg" viewBox="0 0 300 120">
+                                    <polyline fill="none" stroke="#ff6b6b" stroke-width="3" points="0,70 30,60 60,55 90,50 120,45 150,40 180,35 210,32 240,30 270,28 300,25"/>
+                                    <polyline fill="none" stroke="#00d4ff" stroke-width="3" points="0,85 30,75 60,65 90,58 120,52 150,48 180,43 210,40 240,38 270,35 300,33"/>
+                                </svg>
+                            </div>
+                            <div class="chart-legend">
+                                <span><span class="dot red"></span> Energy (Wh)</span>
+                                <span><span class="dot purple"></span> Speed (kW)</span>
+                            </div>
+                            <div class="chart-stats">
+                                <div class="stat-item">
+                                    <span class="stat-value">1200 Wh</span>
+                                    <span class="stat-label">Total Energy</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value">1.5 hrs</span>
+                                    <span class="stat-label">Avg. Time</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav-bar">
+                        <span class="nav-icon" onclick="showScreen(13)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                        </span>
+                        <span class="nav-icon" onclick="showScreen(26)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                            </svg>
+                        </span>
+                        <span class="nav-icon" onclick="showScreen(8)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 16: Success -->
+            <div class="screen" id="screen-16">
+                <div class="phone-frame">
+                    <div class="status-bar">
+                        <div class="dynamic-island"></div>
+                        <div class="status-bar-left">
+                            <span class="status-time">9:41</span>
+                        </div>
+                        <div class="status-bar-right">
+                            <div class="signal-icon">
+                                <svg viewBox="0 0 17 10" fill="none">
+                                    <rect x="0" y="8" width="2" height="2" fill="#000000" opacity="0.3"/>
+                                    <rect x="3" y="6" width="2" height="4" fill="#000000" opacity="0.5"/>
+                                    <rect x="6" y="4" width="2" height="6" fill="#000000" opacity="0.7"/>
+                                    <rect x="9" y="2" width="2" height="8" fill="#000000" opacity="1"/>
+                                    <rect x="12" y="0" width="2" height="10" fill="#000000" opacity="1"/>
+                                </svg>
+                            </div>
+                            <div class="wifi-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                                    <line x1="12" y1="20" x2="12.01" y2="20"/>
+                                </svg>
+                            </div>
+                            <div class="battery-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="6" width="18" height="12" rx="2" ry="2"/>
+                                    <line x1="23" y1="13" x2="23" y2="11"/>
+                                    <rect x="3" y="8" width="14" height="8" rx="1" fill="#000000"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="screen-content success">
+                        <div class="success-icon">✓</div>
+                        <h3>Password Updated!</h3>
+                        <p>Your password has been successfully updated.</p>
+                        <button class="btn btn-primary btn-full" onclick="goToLoginAfterPasswordReset()">Back to Log In</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 26: Recommendations -->
+            <div class="screen screen-main-page" id="screen-26">
+                <div class="phone-frame">
+                    <div class="status-bar">
+                        <div class="dynamic-island"></div>
+                        <div class="status-bar-left">
+                            <span class="status-time">9:41</span>
+                        </div>
+                        <div class="status-bar-right">
+                            <div class="signal-icon">
+                                <svg viewBox="0 0 17 10" fill="none">
+                                    <rect x="0" y="8" width="2" height="2" fill="#000000" opacity="0.3"/>
+                                    <rect x="3" y="6" width="2" height="4" fill="#000000" opacity="0.5"/>
+                                    <rect x="6" y="4" width="2" height="6" fill="#000000" opacity="0.7"/>
+                                    <rect x="9" y="2" width="2" height="8" fill="#000000" opacity="1"/>
+                                    <rect x="12" y="0" width="2" height="10" fill="#000000" opacity="1"/>
+                                </svg>
+                            </div>
+                            <div class="wifi-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                                    <line x1="12" y1="20" x2="12.01" y2="20"/>
+                                </svg>
+                            </div>
+                            <div class="battery-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="6" width="18" height="12" rx="2" ry="2"/>
+                                    <line x1="23" y1="13" x2="23" y2="11"/>
+                                    <rect x="3" y="8" width="14" height="8" rx="1" fill="#000000"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="screen-content">
+                        <div class="recommendations-header">
+                            <h2>Personalized Charging Tips</h2>
+                            <p class="recommendations-subtitle">Based on your recent charging sessions</p>
+                        </div>
+                        <div class="recommendations-list">
+                            <div class="recommendation-card">
+                                <div class="recommendation-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                                        <line x1="12" y1="18" x2="12" y2="18"/>
+                                    </svg>
+                                </div>
+                                <div class="recommendation-content">
+                                    <h4>iPhone 15</h4>
+                                    <p>Your iPhone 15 has been charging longer than usual — unplug after it reaches 100%.</p>
+                                </div>
+                                <div class="recommendation-status status-optimal"></div>
+                            </div>
+                            <div class="recommendation-card">
+                                <div class="recommendation-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="4" width="20" height="12" rx="2" ry="2"/>
+                                        <line x1="2" y1="16" x2="22" y2="16"/>
+                                        <line x1="6" y1="8" x2="6" y2="8"/>
+                                    </svg>
+                                </div>
+                                <div class="recommendation-content">
+                                    <h4>MacBook Pro</h4>
+                                    <p>Your MacBook Pro reaches full capacity quickly — avoid overnight charging to preserve battery health.</p>
+                                </div>
+                                <div class="recommendation-status status-optimal"></div>
+                            </div>
+                            <div class="recommendation-card">
+                                <div class="recommendation-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                        <line x1="8" y1="21" x2="16" y2="21"/>
+                                        <line x1="12" y1="17" x2="12" y2="21"/>
+                                    </svg>
+                                </div>
+                                <div class="recommendation-content">
+                                    <h4>Odyssey G6</h4>
+                                    <p>Your Odyssey G6 is optimized and charging efficiently — maintain this charging pattern for best results.</p>
+                                </div>
+                                <div class="recommendation-status status-optimal"></div>
+                            </div>
+                            <div class="recommendation-card">
+                                <div class="recommendation-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="8"/>
+                                        <polyline points="12 6 12 12 16 14"/>
+                                    </svg>
+                                </div>
+                                <div class="recommendation-content">
+                                    <h4>Apple Watch SE</h4>
+                                    <p>Your Apple Watch charges quickly — consider charging during your morning routine for optimal timing.</p>
+                                </div>
+                                <div class="recommendation-status status-optimal"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav-bar">
+                        <span class="nav-icon" onclick="showScreen(13)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                        </span>
+                        <span class="nav-icon active">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                            </svg>
+                        </span>
+                        <span class="nav-icon" onclick="showScreen(8)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 27: Notifications -->
+            <div class="screen" id="screen-27">
+                <div class="phone-frame">
+                    <div class="status-bar">
+                        <div class="dynamic-island"></div>
+                        <div class="status-bar-left">
+                            <span class="status-time">9:41</span>
+                        </div>
+                        <div class="status-bar-right">
+                            <div class="signal-icon">
+                                <svg viewBox="0 0 17 10" fill="none">
+                                    <rect x="0" y="8" width="2" height="2" fill="#000000" opacity="0.3"/>
+                                    <rect x="3" y="6" width="2" height="4" fill="#000000" opacity="0.5"/>
+                                    <rect x="6" y="4" width="2" height="6" fill="#000000" opacity="0.7"/>
+                                    <rect x="9" y="2" width="2" height="8" fill="#000000" opacity="1"/>
+                                    <rect x="12" y="0" width="2" height="10" fill="#000000" opacity="1"/>
+                                </svg>
+                            </div>
+                            <div class="wifi-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                                    <line x1="12" y1="20" x2="12.01" y2="20"/>
+                                </svg>
+                            </div>
+                            <div class="battery-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="6" width="18" height="12" rx="2" ry="2"/>
+                                    <line x1="23" y1="13" x2="23" y2="11"/>
+                                    <rect x="3" y="8" width="14" height="8" rx="1" fill="#000000"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="top-app-bar">
+                        <div class="back-button" onclick="showScreen(13)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7"/>
+                            </svg>
+                        </div>
+                        <h2 class="page-title">Notifications</h2>
+                    </div>
+                    <div class="screen-content has-top-bar">
+                        <div class="notifications-list">
+                            <div class="notification-item">
+                                <div class="notification-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                                    </svg>
+                                </div>
+                                <div class="notification-content">
+                                    <h4>iPhone 15 fully charged</h4>
+                                    <p>Your device reached 100% battery. Consider unplugging it.</p>
+                                    <span class="notification-time">2 minutes ago</span>
+                                </div>
+                            </div>
+                            <div class="notification-item">
+                                <div class="notification-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                                    </svg>
+                                </div>
+                                <div class="notification-content">
+                                    <h4>High temperature detected</h4>
+                                    <p>Odyssey G6 is charging at elevated temperature. Move to a cooler area.</p>
+                                    <span class="notification-time">1 hour ago</span>
+                                </div>
+                            </div>
+                            <div class="notification-item">
+                                <div class="notification-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"/>
+                                    </svg>
+                                </div>
+                                <div class="notification-content">
+                                    <h4>Charging optimized</h4>
+                                    <p>MacBook Pro charging pattern has been optimized for battery health.</p>
+                                    <span class="notification-time">3 hours ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 25: Change Password -->
+            <div class="screen" id="screen-25">
+                <div class="phone-frame">
+                    <div class="status-bar">
+                        <div class="dynamic-island"></div>
+                        <div class="status-bar-left">
+                            <span class="status-time">9:41</span>
+                        </div>
+                        <div class="status-bar-right">
+                            <div class="signal-icon">
+                                <svg viewBox="0 0 17 10" fill="none">
+                                    <rect x="0" y="8" width="2" height="2" fill="#000000" opacity="0.3"/>
+                                    <rect x="3" y="6" width="2" height="4" fill="#000000" opacity="0.5"/>
+                                    <rect x="6" y="4" width="2" height="6" fill="#000000" opacity="0.7"/>
+                                    <rect x="9" y="2" width="2" height="8" fill="#000000" opacity="1"/>
+                                    <rect x="12" y="0" width="2" height="10" fill="#000000" opacity="1"/>
+                                </svg>
+                            </div>
+                            <div class="wifi-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                                    <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+                                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                                    <line x1="12" y1="20" x2="12.01" y2="20"/>
+                                </svg>
+                            </div>
+                            <div class="battery-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="6" width="18" height="12" rx="2" ry="2"/>
+                                    <line x1="23" y1="13" x2="23" y2="11"/>
+                                    <rect x="3" y="8" width="14" height="8" rx="1" fill="#000000"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="top-app-bar">
+                        <div class="back-button" onclick="showScreen(8)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 12H5M12 19l-7-7 7-7"/>
+                            </svg>
+                        </div>
+                        <h2 class="page-title">Change Password</h2>
+                    </div>
+                    <div class="screen-content has-top-bar">
+                        <div id="change-password-success-message" class="success-message" style="display: none;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            <span>Password updated successfully</span>
+                        </div>
+                        <input type="password" placeholder="Current Password">
+                        <input type="password" placeholder="New Password">
+                        <input type="password" placeholder="Confirm New Password">
+                        <button class="btn btn-primary btn-full" onclick="updatePasswordFromSettings()">Update Password</button>
+                    </div>
+                    <div class="nav-bar">
+                        <span class="nav-icon" onclick="showScreen(13)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                        </span>
+                        <span class="nav-icon" onclick="showScreen(26)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                            </svg>
+                        </span>
+                        <span class="nav-icon" onclick="showScreen(8)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
