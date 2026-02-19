@@ -1,7 +1,8 @@
 let currentScreen = 1;
-const totalScreens = 27; // Updated to include notifications screen (27)
+const totalScreens = 35; // Updated to include onboarding screens (31-35)
 let passwordResetSuccess = false;
 let lastScreenNumber = 1;
+let registrationSource = null; // Track if user came from registration
 
 // Track last device screen for Smart Charging navigation
 let lastDeviceScreen = 5;
@@ -32,6 +33,10 @@ function showScreen(screenNumber) {
         
         // Auto-navigate from loading screen (screen 12) to home (screen 13) after 3 seconds
         if (screenNumber === 12) {
+            // Track if we came from registration
+            if (lastScreenNumber === 2) {
+                registrationSource = true;
+            }
             setTimeout(() => {
                 showScreen(13);
             }, 3000);
@@ -43,6 +48,15 @@ function showScreen(screenNumber) {
             setTimeout(() => {
                 goToLoginAfterPasswordReset();
             }, 2500);
+        }
+        
+        // Check if we should show onboarding after reaching home screen
+        // Show onboarding if user reaches home from loading screen (after registration or login)
+        // and hasn't completed onboarding yet
+        if (screenNumber === 13 && !hasCompletedOnboarding() && !isOnboardingActive && lastScreenNumber === 12) {
+            // Reset registration source flag
+            registrationSource = false;
+            checkOnboardingAfterRegistration();
         }
     }
 }
@@ -149,4 +163,105 @@ function goToLoginAfterPasswordReset() {
 function logout() {
     showScreen(1);
 }
+
+// Onboarding Carousel System
+let currentOnboardingSlide = 1;
+const totalOnboardingSlides = 5;
+let isOnboardingActive = false;
+
+// Check if user has completed onboarding
+function hasCompletedOnboarding() {
+    return localStorage.getItem('hasCompletedOnboarding') === 'true';
+}
+
+// Mark onboarding as completed
+function markOnboardingCompleted() {
+    localStorage.setItem('hasCompletedOnboarding', 'true');
+}
+
+// Start onboarding
+function startOnboarding() {
+    isOnboardingActive = true;
+    showScreen(31); // Start with first onboarding screen
+}
+
+// Show specific onboarding slide
+function showOnboardingSlide(slide) {
+    // Hide all slides
+    document.querySelectorAll('.onboarding-slide').forEach(s => {
+        s.classList.remove('active');
+    });
+    
+    // Show current slide
+    const currentSlide = document.querySelector(`.onboarding-slide[data-slide="${slide}"]`);
+    if (currentSlide) {
+        currentSlide.classList.add('active');
+    }
+    
+    // Update slides container position
+    const container = document.getElementById('onboarding-slides-container');
+    if (container) {
+        container.style.transform = `translateX(-${(slide - 1) * 100}%)`;
+    }
+    
+    // Update dots
+    document.querySelectorAll('.onboarding-dots .dot').forEach((dot, index) => {
+        if (index + 1 === slide) {
+            dot.classList.add('active');
+        } else {
+            dot.classList.remove('active');
+        }
+    });
+    
+    // Update button text
+    const nextBtn = document.getElementById('onboarding-next-btn');
+    if (nextBtn) {
+        if (slide === totalOnboardingSlides) {
+            nextBtn.textContent = 'Get Started';
+            nextBtn.classList.add('get-started');
+        } else {
+            nextBtn.textContent = 'Next';
+            nextBtn.classList.remove('get-started');
+        }
+    }
+}
+
+
+// Next onboarding slide
+function nextOnboardingSlide() {
+    if (navigator.vibrate) {
+        navigator.vibrate(10);
+    }
+    
+    if (currentOnboardingSlide < totalOnboardingSlides) {
+        currentOnboardingSlide++;
+        showOnboardingSlide(currentOnboardingSlide);
+    } else {
+        // Finish onboarding
+        finishOnboarding();
+    }
+}
+
+// Skip onboarding
+function skipOnboarding() {
+    finishOnboarding();
+}
+
+// Finish onboarding
+function finishOnboarding() {
+    isOnboardingActive = false;
+    markOnboardingCompleted();
+    showScreen(13); // Navigate to Home
+}
+
+// Check and show onboarding after registration
+function checkOnboardingAfterRegistration() {
+    if (!hasCompletedOnboarding()) {
+        // Show onboarding after a short delay
+        setTimeout(() => {
+            startOnboarding();
+        }, 500);
+    }
+}
+
 
